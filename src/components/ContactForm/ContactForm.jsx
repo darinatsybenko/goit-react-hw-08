@@ -1,4 +1,4 @@
-import { Field, Form, Formik } from "formik";
+import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as Yup from "yup";
 import {
   maxCharNameValidation,
@@ -7,24 +7,24 @@ import {
 
 const contactValidationSchema = Yup.object({
   userName: Yup.string()
-    .required("Name is required")
     .min(minCharNameValidation, "Your name is too short!")
     .max(
       maxCharNameValidation,
       "Your user name must be less than ${maxCharNameValidation} characters!"
-    ),
-  userNamber: Yup.string()
-    .required("Namber is required!")
+    )
+    .required("Name is required"),
+  userNumber: Yup.string()
     .min(minCharNameValidation, "Your namber is too short!")
     .max(
       maxCharNameValidation,
-      "Your user namber must be less than ${maxCharNameValidation} characters!"
-    ),
+      "Your user number must be less than ${maxCharNameValidation} characters!"
+    )
+    .required("Number is required!"),
 });
 
 const formInitialValues = {
   userName: "",
-  userNamber: "",
+  userNumber: "",
 };
 const ContactForm = ({ onAddUser }) => {
   const handleSubmit = (values, actions) => {
@@ -37,17 +37,18 @@ const ContactForm = ({ onAddUser }) => {
       <Formik
         validationSchema={contactValidationSchema}
         initialValues={formInitialValues}
-        onSubmit={() => {}}
       >
         <Form onSubmit={handleSubmit}>
           <label>
             <span>Name</span>
             <Field type="text" name="userName" />
+            <ErrorMessage name="userName" />
           </label>
           <br />
           <label>
-            <span>Namber</span>
+            <span>Number</span>
             <Field type="text" name="userNumber" />
+            <ErrorMessage name="userNumber" />
           </label>
           <br />
           <button type="submit">Add contact</button>
