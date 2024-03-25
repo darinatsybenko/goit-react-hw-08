@@ -12,7 +12,7 @@ const contactValidationSchema = Yup.object({
       maxCharNameValidation,
       "Your user name must be less than ${maxCharNameValidation} characters!"
     )
-    .required("Name is required"),
+    .required("Name is required!"),
   userNumber: Yup.string()
     .min(minCharNameValidation, "Your namber is too short!")
     .max(
@@ -37,18 +37,19 @@ const ContactForm = ({ onAddUser }) => {
       <Formik
         validationSchema={contactValidationSchema}
         initialValues={formInitialValues}
+        onSubmit={handleSubmit}
       >
-        <Form onSubmit={handleSubmit}>
+        <Form>
           <label>
             <span>Name</span>
             <Field type="text" name="userName" />
-            <ErrorMessage name="userName" />
+            <ErrorMessage component="p" name="userName" />
           </label>
           <br />
           <label>
             <span>Number</span>
             <Field type="text" name="userNumber" />
-            <ErrorMessage name="userNumber" />
+            <ErrorMessage component="p" name="userNumber" />
           </label>
           <br />
           <button type="submit">Add contact</button>
