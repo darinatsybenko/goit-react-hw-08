@@ -1,3 +1,4 @@
+import css from "./ContactForm.module.css";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as Yup from "yup";
 import {
@@ -39,20 +40,34 @@ const ContactForm = ({ onAddUser }) => {
         initialValues={formInitialValues}
         onSubmit={handleSubmit}
       >
-        <Form>
-          <label>
-            <span>Name</span>
-            <Field type="text" name="userName" />
-            <ErrorMessage component="p" name="userName" />
-          </label>
-          <br />
-          <label>
-            <span>Number</span>
-            <Field type="text" name="userNumber" />
-            <ErrorMessage component="p" name="userNumber" />
-          </label>
-          <br />
-          <button type="submit">Add contact</button>
+        <Form className={css.form}>
+          <div>
+            <label>
+              <span>Name</span>
+              <br />
+              <Field type="text" name="userName" className={css.formInput} />
+              <ErrorMessage
+                className={css.message}
+                component="p"
+                name="userName"
+              />
+            </label>
+            <br />
+            <label>
+              <span>Number</span>
+              <br />
+              <Field type="text" name="userNumber" className={css.formInput} />
+              <ErrorMessage
+                component="p"
+                name="userNumber"
+                className={css.message}
+              />
+            </label>
+            <br />
+            <button className={css.formBtn} type="submit">
+              Add contact
+            </button>
+          </div>
         </Form>
       </Formik>
     </div>

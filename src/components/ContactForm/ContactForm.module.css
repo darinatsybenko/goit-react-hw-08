@@ -1,0 +1,27 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  width: 300px;
+  border: 2px solid grey;
+  cursor: pointer;
+  border-radius: 4px;
+  padding: 8px;
+  margin: 0 auto;
+  margin-bottom: 24px;
+}
+
+.formBtn {
+  width: 112px;
+  padding: 4px;
+}
+
+.formInput {
+  width: 280px;
+}
+
+.message {
+  color: red;
+}
