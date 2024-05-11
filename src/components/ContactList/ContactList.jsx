@@ -1,13 +1,15 @@
 import css from "./ContactList.module.css";
 import Contact from "../Contact/Contact";
 import { useSelector } from "react-redux";
+import { selectorContacts } from "../../redux/contacts/contactsSlice";
+import { selectorFilter } from "../../redux/filter/filtersSlice";
 
 const ContactList = ({ onDeleteUser }) => {
-  const users = useSelector((state) => state.contacts.contacts);
-  const filter = useSelector((state) => state.contacts.filters);
+  const selectContacts = useSelector(selectorContacts);
+  const selectFilterName = useSelector(selectorFilter);
 
-  const filteredUsers = users.filter((user) =>
-    user.name.toLowerCase().includes(filter.toLocaleLowerCase())
+  const filteredUsers = selectContacts.filter((user) =>
+    user.name.toLowerCase().includes(selectFilterName.toLocaleLowerCase())
   );
 
   return (
