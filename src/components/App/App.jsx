@@ -1,9 +1,10 @@
 import ContactForm from "../ContactForm/ContactForm";
 import ContactList from "../ContactList/ContactList";
 import SearchBox from "../SearchBox/SearchBox";
-
-// import { useDispatch, useSelector } from "react-redux";
-// import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { apiRequestContacts } from "../../redux/contactsOps";
+import { useParams } from "react-router-dom";
 // import { setFilter } from "../../redux/filter/filtersSlice";
 
 const App = () => {
@@ -16,8 +17,11 @@ const App = () => {
 
   // const users = useSelector((state) => state.contacts.contacts);
   // const filter = useSelector((state) => state.contacts.filters);
-  // const dispatch = useDispatch();
-
+  const { contactId } = useParams();
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(apiRequestContacts(contactId));
+  }, [dispatch, contactId]);
   // useEffect(() => {
   //   localStorage.setItem("users", JSON.stringify(users));
   // }, [users]);

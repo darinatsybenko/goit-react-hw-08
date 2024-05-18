@@ -7,7 +7,7 @@ import {
 } from "../../utils/constants";
 import { useDispatch } from "react-redux";
 import { addUser } from "../../redux/contacts/contactsSlice";
-import { nanoid } from "nanoid";
+// import { nanoid } from "nanoid";
 
 const contactValidationSchema = Yup.object({
   userName: Yup.string()
@@ -34,14 +34,14 @@ const ContactForm = () => {
   const dispatch = useDispatch();
 
   const onAddUser = (FormData) => {
-    const finalUser = {
-      name: FormData.userName,
-      number: FormData.userNumber,
-      id: nanoid(),
-    };
+    // const finalUser = {
+    // name: FormData.userName,
+    // number: FormData.userNumber,
+    // id: nanoid(),
+    //};
     // setUsers([...users, finalUser]);
 
-    dispatch(addUser(finalUser));
+    dispatch(addUser(FormData));
   };
 
   const handleSubmit = (values, actions) => {
