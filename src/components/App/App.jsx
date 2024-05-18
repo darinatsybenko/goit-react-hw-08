@@ -1,7 +1,7 @@
 import ContactForm from "../ContactForm/ContactForm";
 import ContactList from "../ContactList/ContactList";
 import SearchBox from "../SearchBox/SearchBox";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { apiRequestContacts } from "../../redux/contactsOps";
 import { useParams } from "react-router-dom";

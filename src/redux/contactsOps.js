@@ -1,11 +1,11 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { requestAllContacts } from "../components/App/api";
+import { getContacts } from "../components/App/api";
 
 export const apiRequestContacts = createAsyncThunk(
-  "contacs/getContacs",
+  "contacs/fetchAll",
   async (contactsId, thunkApi) => {
     try {
-      const data = await requestAllContacts(contactsId);
+      const data = await getContacts(contactsId);
       return data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
