@@ -2,10 +2,11 @@ import css from "./ContactList.module.css";
 import Contact from "../Contact/Contact";
 import { selectFilteredContacts } from "../../redux/contacts/contactsSlice";
 import { useSelector } from "react-redux";
+
 // import { selectorContacts } from "../../redux/contacts/contactsSlice";
 // import { selectorFilter } from "../../redux/filter/filtersSlice";
 
-const ContactList = ({ onDeleteUser }) => {
+const ContactList = () => {
   // const selectContacts = useSelector(selectorContacts);
   // const selectFilterName = useSelector(selectorFilter);
 
@@ -19,12 +20,7 @@ const ContactList = ({ onDeleteUser }) => {
         {filteredContacts.map((user) => {
           return (
             <li className={css.contactItem} key={user.id}>
-              <Contact
-                onDeleteUser={onDeleteUser}
-                name={user.name}
-                number={user.number}
-                id={user.id}
-              />
+              <Contact name={user.name} number={user.number} id={user.id} />
             </li>
           );
         })}
