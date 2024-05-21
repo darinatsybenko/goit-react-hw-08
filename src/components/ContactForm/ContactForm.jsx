@@ -6,7 +6,7 @@ import {
   minCharNameValidation,
 } from "../../utils/constants";
 import { useDispatch } from "react-redux";
-import { addUser } from "../../redux/contacts/contactsSlice";
+import { addContact } from "../../redux/contactsOps";
 // import { nanoid } from "nanoid";
 
 const contactValidationSchema = Yup.object({
@@ -41,7 +41,7 @@ const ContactForm = () => {
     //};
     // setUsers([...users, finalUser]);
 
-    dispatch(addUser(FormData));
+    dispatch(addContact(FormData));
   };
 
   const handleSubmit = (values, actions) => {
