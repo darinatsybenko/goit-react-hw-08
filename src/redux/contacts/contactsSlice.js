@@ -50,18 +50,6 @@ const contactsSlice = createSlice({
         state.loading = false;
         state.error = action.payload;
       }),
-
-  // Об'єкт редюсерів
-  // reducers: {
-  //   addUser(state, action) {
-  //     state.items.push(action.payload);
-  //   },
-  //   deleteUser(state, action) {
-  //     state.items = state.items.filter(
-  //       (contact) => contact.id !== action.payload
-  //     );
-  //   },
-  // },
 });
 
 export const { addUser, deleteUser } = contactsSlice.actions;

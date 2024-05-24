@@ -8,8 +8,6 @@ import { isError, isLoading } from "../../redux/contacts/contactsSlice";
 import ErrorMessage from "../errorMessage/errorMessage";
 import { apiRequestContacts } from "../../redux/contactsOps";
 
-// import { setFilter } from "../../redux/filter/filtersSlice";
-
 const App = () => {
   const Loading = useSelector(isLoading);
   const Error = useSelector(isError);

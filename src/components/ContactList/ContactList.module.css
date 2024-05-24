@@ -7,7 +7,12 @@
   margin-top: 24px;
 }
 .contactItem {
-  border: 2px solid black;
-  border-radius: 14px;
-  width: calc((100% - 36px) / 4);
+  border: 1px solid #ddd;
+  width: 250px;
+  padding: 0 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }

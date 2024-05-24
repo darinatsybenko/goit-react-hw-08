@@ -11,7 +11,7 @@ const Contact = ({ id, name, number }) => {
     dispatch(deleteContact(contactId));
   };
   return (
-    <div className={css.container}>
+    <div>
       <div className={css.contact}>
         <FaUser />
         <p className={css.text}>{name}</p>
