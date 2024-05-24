@@ -3,10 +3,10 @@ import ContactList from "../ContactList/ContactList";
 import SearchBox from "../SearchBox/SearchBox";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { getContacts } from "./api";
 import Loader from "../Loader/Loader";
 import { isError, isLoading } from "../../redux/contacts/contactsSlice";
 import ErrorMessage from "../errorMessage/errorMessage";
+import { apiRequestContacts } from "../../redux/contactsOps";
 
 // import { setFilter } from "../../redux/filter/filtersSlice";
 
@@ -16,7 +16,7 @@ const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getContacts());
+    dispatch(apiRequestContacts());
   }, [dispatch]);
 
   return (
