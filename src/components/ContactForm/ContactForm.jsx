@@ -33,19 +33,19 @@ const formInitialValues = {
 const ContactForm = () => {
   const dispatch = useDispatch();
 
-  const onAddUser = (FormData) => {
-    // const finalUser = {
-    // name: FormData.userName,
-    // number: FormData.userNumber,
-    // id: nanoid(),
-    //};
-    // setUsers([...users, finalUser]);
+  // const onAddUser = (FormData) => {
+  //   // const finalUser = {
+  //   // name: FormData.userName,
+  //   // number: FormData.userNumber,
+  //   // id: nanoid(),
+  //   //};
+  //   // setUsers([...users, finalUser]);
 
-    dispatch(addContact(FormData));
-  };
+  //   dispatch(addContact(FormData));
+  // };
 
   const handleSubmit = (values, actions) => {
-    onAddUser(values);
+    dispatch(addContact(values));
     actions.resetForm();
   };
 

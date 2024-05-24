@@ -70,10 +70,11 @@ export const isError = (state) => state.contacts.error;
 export const selectorContacts = (state) => state.contacts.items;
 // Редюсер слайсу
 export const contactsReducer = contactsSlice.reducer;
+
 export const selectFilteredContacts = createSelector(
   [selectorContacts, selectorFilter],
   (contacts, filter) => {
-    contacts.filter((contact) => {
+    return contacts.filter((contact) => {
       return contact.name.toLowerCase().includes(filter.toLocaleLowerCase());
     });
   }
