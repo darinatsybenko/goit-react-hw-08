@@ -1,32 +1,27 @@
-import ContactForm from "../ContactForm/ContactForm";
-import ContactList from "../ContactList/ContactList";
-import SearchBox from "../SearchBox/SearchBox";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { Route, Routes } from "react-router-dom";
+import HomePage from "../../pages/HomePage";
+import RegistrationPage from "../../pages/RegistrationPage";
+import LoginPage from "../../pages/LoginPage";
+import ContactsPage from "../../pages/ContactsPage";
+import NotFound from "../../pages/NotFound";
+import { Suspense } from "react";
 import Loader from "../Loader/Loader";
-import { isError, isLoading } from "../../redux/contacts/contactsSlice";
-import ErrorMessage from "../errorMessage/errorMessage";
-import { apiRequestContacts } from "../../redux/contactsOps";
+import Layout from "../Layout/Layout";
 
 const App = () => {
-  const Loading = useSelector(isLoading);
-  const Error = useSelector(isError);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(apiRequestContacts());
-  }, [dispatch]);
-
   return (
     <div>
-      <h1>
-        <b className="titleMain">Phonebook </b>
-        <ContactForm />
-        <SearchBox />
-        {Loading && <Loader />}
-        {Error && <ErrorMessage />}
-        <ContactList />
-      </h1>
+      <Layout>
+        <Suspense fallback={<Loader />}>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/register" element={<RegistrationPage />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/contacts" element={<ContactsPage />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </Suspense>
+      </Layout>
     </div>
   );
 };
