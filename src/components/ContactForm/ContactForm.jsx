@@ -6,18 +6,18 @@ import {
   minCharNameValidation,
 } from "../../utils/constants";
 import { useDispatch } from "react-redux";
-import { addContact } from "../../redux/contactsOps";
+import { addContact } from "../../redux/contacts/contactsOps";
 // import { nanoid } from "nanoid";
 
 const contactValidationSchema = Yup.object({
-  userName: Yup.string()
+  name: Yup.string()
     .min(minCharNameValidation, "Your name is too short!")
     .max(
       maxCharNameValidation,
       "Your user name must be less than ${maxCharNameValidation} characters!"
     )
     .required("Name is required!"),
-  userNumber: Yup.string()
+  number: Yup.string()
     .min(minCharNameValidation, "Your namber is too short!")
     .max(
       maxCharNameValidation,
@@ -27,8 +27,8 @@ const contactValidationSchema = Yup.object({
 });
 
 const formInitialValues = {
-  userName: "",
-  userNumber: "",
+  name: "",
+  number: "",
 };
 const ContactForm = () => {
   const dispatch = useDispatch();
@@ -61,21 +61,17 @@ const ContactForm = () => {
             <label>
               <span>Name</span>
               <br />
-              <Field type="text" name="userName" className={css.formInput} />
-              <ErrorMessage
-                className={css.message}
-                component="p"
-                name="userName"
-              />
+              <Field type="text" name="name" className={css.formInput} />
+              <ErrorMessage className={css.message} component="p" name="name" />
             </label>
             <br />
             <label>
               <span>Number</span>
               <br />
-              <Field type="text" name="userNumber" className={css.formInput} />
+              <Field type="text" name="number" className={css.formInput} />
               <ErrorMessage
                 component="p"
-                name="userNumber"
+                name="number"
                 className={css.message}
               />
             </label>

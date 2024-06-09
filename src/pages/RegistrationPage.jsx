@@ -1,5 +1,3 @@
-import { useDispatch } from "react-redux";
-import { addContact } from "../redux/contactsOps";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as Yup from "yup";
 import {
@@ -8,6 +6,8 @@ import {
   minCharPasswordValidation,
 } from "../utils/constants";
 import css from "../components/ContactForm/ContactForm.module.css";
+import { useDispatch } from "react-redux";
+import { register } from "../redux/auth/operation";
 
 const registerValidationSchema = Yup.object({
   name: Yup.string()
@@ -40,7 +40,8 @@ const formInitialValues = {
 const RegistrationPage = () => {
   const dispatch = useDispatch();
   const handleSubmit = (values, actions) => {
-    dispatch(addContact(values));
+    console.log("values:", values);
+    dispatch(register(values));
     actions.resetForm();
   };
   return (
@@ -82,7 +83,7 @@ const RegistrationPage = () => {
               />
             </label>
             <button className={css.formBtn} type="submit">
-              register user
+              Add new user
             </button>
           </div>
         </Form>
