@@ -1,4 +1,4 @@
-import { createSelector, createSlice } from "@reduxjs/toolkit";
+import { createSelector, createSlice, isAnyOf } from "@reduxjs/toolkit";
 import { addContact, apiRequestContacts, deleteContact } from "./contactsOps";
 import { selectorFilter } from "../filter/filtersSlice";
 
@@ -12,33 +12,13 @@ const contactsSlice = createSlice({
   },
   extraReducers: (builder) =>
     builder
-      .addCase(apiRequestContacts.pending, (state) => {
-        state.loading = true;
-        state.error = null;
-      })
       .addCase(apiRequestContacts.fulfilled, (state, action) => {
         state.loading = false;
         state.items = action.payload;
       })
-      .addCase(apiRequestContacts.rejected, (state) => {
-        state.loading = false;
-        state.error = true;
-      })
-      .addCase(addContact.pending, (state) => {
-        state.loading = true;
-        state.error = null;
-      })
       .addCase(addContact.fulfilled, (state, action) => {
         state.loading = false;
         state.items.push(action.payload);
-      })
-      .addCase(addContact.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.payload;
-      })
-      .addCase(deleteContact.pending, (state) => {
-        state.loading = true;
-        state.error = null;
       })
       .addCase(deleteContact.fulfilled, (state, action) => {
         state.loading = false;
@@ -46,10 +26,28 @@ const contactsSlice = createSlice({
           (contact) => contact.id !== action.payload.id
         );
       })
-      .addCase(deleteContact.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.payload;
-      }),
+      .addMatcher(
+        isAnyOf(
+          deleteContact.rejected,
+          apiRequestContacts.rejected,
+          addContact.rejected
+        ),
+        (state, action) => {
+          state.loading = false;
+          state.error = action.payload;
+        }
+      )
+      .addMatcher(
+        isAnyOf(
+          deleteContact.pending,
+          addContact.pending,
+          apiRequestContacts.pending
+        ),
+        (state) => {
+          state.loading = true;
+          state.error = null;
+        }
+      ),
 });
 
 export const { addUser, deleteUser } = contactsSlice.actions;

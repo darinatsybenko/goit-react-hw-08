@@ -6,8 +6,8 @@ import { deleteContact } from "../../redux/contacts/contactsOps";
 const Contact = ({ id, name, number }) => {
   const dispatch = useDispatch();
 
-  const onDeleteUser = () => {
-    const contactId = id;
+  const onDeleteUser = (contactId) => {
+    // const contactId = id;
     dispatch(deleteContact(contactId));
   };
   return (
