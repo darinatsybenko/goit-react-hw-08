@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-
 import { logoutn } from "../../redux/auth/operation";
 import { NavLink } from "react-router-dom";
 import clsx from "clsx";
@@ -43,14 +42,13 @@ const Navigation = () => {
           <NavLink className={getNavLinkStyle} to="/">
             HomePage
           </NavLink>
-          <>
-            <NavLink className={getNavLinkStyle} to="/contacts">
-              Contacts
-            </NavLink>
-            <button onClick={onOpenModal} type="button">
-              Logout
-            </button>
-          </>
+
+          <NavLink className={getNavLinkStyle} to="/contacts">
+            Contacts
+          </NavLink>
+          <button onClick={onOpenModal} type="button">
+            Logout
+          </button>
         </nav>
       </header>
     </div>
