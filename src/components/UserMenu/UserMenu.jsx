@@ -37,7 +37,6 @@ const UserMenu = () => {
           </button>
         </div>
       )}
-      ;
     </div>
   );
 };

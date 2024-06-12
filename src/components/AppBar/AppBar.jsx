@@ -5,7 +5,7 @@ import UserMenu from "../UserMenu/UserMenu";
 import AuthNav from "../AuthNav/AuthNav";
 
 const AppBar = () => {
-  const { isLoggedIn } = useSelector(selectIsLoggeidIn);
+  const isLoggedIn = useSelector(selectIsLoggeidIn);
   return (
     <header>
       <Navigation />

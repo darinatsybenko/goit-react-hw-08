@@ -10,7 +10,7 @@ const getNavLinkStyle = ({ isActive }) =>
   });
 
 const Navigation = () => {
-  const { isLoggedIn } = useSelector(selectIsLoggeidIn);
+  const isLoggedIn = useSelector(selectIsLoggeidIn);
   return (
     <div>
       <header className={css.header}>
