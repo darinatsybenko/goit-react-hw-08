@@ -27,3 +27,9 @@
   color: red;
   border: 1px solid red;
 }
+
+.btn {
+  cursor: pointer;
+  width: 60px 60px;
+  border: 2px solid black;
+}

@@ -1,9 +1,8 @@
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { logoutn } from "../../redux/auth/operation";
 import { NavLink } from "react-router-dom";
 import clsx from "clsx";
 import css from "./Navigation.module.css";
+import { useSelector } from "react-redux";
+import { selectIsLoggeidIn } from "../../redux/auth/selectors";
 
 const getNavLinkStyle = ({ isActive }) =>
   clsx(css.navLink, {
@@ -11,44 +10,19 @@ const getNavLinkStyle = ({ isActive }) =>
   });
 
 const Navigation = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const dispatch = useDispatch();
-
-  const onCloceModal = () => {
-    setIsModalOpen(false);
-  };
-  const onOpenModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const onLogout = () => {
-    dispatch(logoutn(), onCloceModal());
-  };
+  const { isLoggedIn } = useSelector(selectIsLoggeidIn);
   return (
     <div>
-      {isModalOpen && (
-        <div>
-          <h3>Are you sure you want to log out?</h3>
-          <button onClick={onLogout} type="button">
-            Yes
-          </button>
-          <button onClick={onCloceModal} type="button">
-            No
-          </button>
-        </div>
-      )}
       <header className={css.header}>
         <nav className={css.nav}>
           <NavLink className={getNavLinkStyle} to="/">
             HomePage
           </NavLink>
-
-          <NavLink className={getNavLinkStyle} to="/contacts">
-            Contacts
-          </NavLink>
-          <button onClick={onOpenModal} type="button">
-            Logout
-          </button>
+          {isLoggedIn && (
+            <NavLink className={getNavLinkStyle} to="/contacts">
+              Contacts
+            </NavLink>
+          )}
         </nav>
       </header>
     </div>
