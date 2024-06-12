@@ -1,18 +1,18 @@
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { selectIsLoggeidIn, selectUserData } from "../../redux/auth/selectors";
+import { useDispatch } from "react-redux";
+
 import { logoutn } from "../../redux/auth/operation";
 import { NavLink } from "react-router-dom";
 import clsx from "clsx";
 import css from "./Navigation.module.css";
+
 const getNavLinkStyle = ({ isActive }) =>
   clsx(css.navLink, {
     [css.active]: isActive,
   });
+
 const Navigation = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const userData = useSelector(selectUserData);
-  const isLoggedIn = useSelector(selectIsLoggeidIn);
   const dispatch = useDispatch();
 
   const onCloceModal = () => {
@@ -43,28 +43,14 @@ const Navigation = () => {
           <NavLink className={getNavLinkStyle} to="/">
             HomePage
           </NavLink>
-          {isLoggedIn ? (
-            <>
-              <NavLink className={getNavLinkStyle} to="/contacts">
-                Contacts
-              </NavLink>
-              <div>
-                <span>Hi, {userData.name}!</span>
-                <button onClick={onOpenModal} type="button">
-                  Logout
-                </button>
-              </div>
-            </>
-          ) : (
-            <>
-              <NavLink className={getNavLinkStyle} to="/register">
-                Register
-              </NavLink>
-              <NavLink className={getNavLinkStyle} to="/login">
-                Log In
-              </NavLink>
-            </>
-          )}
+          <>
+            <NavLink className={getNavLinkStyle} to="/contacts">
+              Contacts
+            </NavLink>
+            <button onClick={onOpenModal} type="button">
+              Logout
+            </button>
+          </>
         </nav>
       </header>
     </div>

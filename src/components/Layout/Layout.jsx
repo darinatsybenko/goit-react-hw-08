@@ -1,5 +1,5 @@
-import { AppBar } from "@mui/material";
 import { Suspense } from "react";
+import AppBar from "../AppBar/AppBar";
 
 const Layout = ({ children }) => {
   return (
