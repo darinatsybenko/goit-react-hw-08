@@ -7,7 +7,7 @@ const NavLinkStyle = ({ isActive }) =>
   });
 const AuthNav = () => {
   return (
-    <div>
+    <div className={css.header}>
       <NavLink className={NavLinkStyle} to="/register">
         Register
       </NavLink>

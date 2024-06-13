@@ -46,7 +46,7 @@ const RegistrationPage = () => {
   };
   return (
     <div>
-      <h2>Register user</h2>
+      <h2 className={css.text}>Register user</h2>
       <Formik
         validationSchema={registerValidationSchema}
         initialValues={formInitialValues}
