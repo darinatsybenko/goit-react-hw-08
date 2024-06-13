@@ -5,8 +5,9 @@ import SearchBox from "../components/SearchBox/SearchBox";
 import Loader from "../components/Loader/Loader";
 import ErrorMessage from "../components/errorMessage/errorMessage";
 import ContactList from "../components/ContactList/ContactList";
-import { isError, isLoading } from "../redux/contacts/contactsSlice";
-import { apiRequestContacts } from "../redux/contacts/contactsOps";
+
+import { apiRequestContacts } from "../redux/contacts/operation";
+import { isError, isLoading } from "../redux/contacts/slise";
 
 const ContactsPage = () => {
   const Loading = useSelector(isLoading);
