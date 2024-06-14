@@ -6,7 +6,7 @@ import {
   minCharNameValidation,
 } from "../../utils/constants";
 import { useDispatch } from "react-redux";
-import { addContact } from "../../redux/contacts/operation";
+import { addContact } from "../../redux/contacts/operations";
 
 // import { nanoid } from "nanoid";
 

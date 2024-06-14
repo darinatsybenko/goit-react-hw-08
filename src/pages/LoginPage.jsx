@@ -7,7 +7,7 @@ import {
 } from "../utils/constants";
 import css from "../components/ContactForm/ContactForm.module.css";
 import { useDispatch } from "react-redux";
-import { login } from "../redux/auth/operation";
+import { login } from "../redux/auth/operations";
 
 const LoginValidationSchema = Yup.object({
   email: Yup.string()

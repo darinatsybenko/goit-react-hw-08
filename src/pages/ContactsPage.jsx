@@ -6,8 +6,8 @@ import Loader from "../components/Loader/Loader";
 import ErrorMessage from "../components/errorMessage/errorMessage";
 import ContactList from "../components/ContactList/ContactList";
 
-import { apiRequestContacts } from "../redux/contacts/operation";
-import { isError, isLoading } from "../redux/contacts/slise";
+import { apiRequestContacts } from "../redux/contacts/operations";
+import { isError, isLoading } from "../redux/contacts/selectors";
 
 const ContactsPage = () => {
   const Loading = useSelector(isLoading);

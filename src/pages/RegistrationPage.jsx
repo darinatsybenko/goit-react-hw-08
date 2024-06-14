@@ -7,7 +7,7 @@ import {
 } from "../utils/constants";
 import css from "../components/ContactForm/ContactForm.module.css";
 import { useDispatch } from "react-redux";
-import { register } from "../redux/auth/operation";
+import { register } from "../redux/auth/operations";
 
 const registerValidationSchema = Yup.object({
   name: Yup.string()
